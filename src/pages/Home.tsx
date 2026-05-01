@@ -1,0 +1,223 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Star } from "lucide-react";
+import heroCar from "@/assets/hero-car.jpg";
+import { services } from "@/data/services";
+
+const rotatingServices = [
+  "Bike Wrapping",
+  "Car Plates",
+  "Wrapping & Stickering",
+  "Car & Bike PPF",
+  "Laser Cut",
+  "Wallpaper",
+];
+
+const reviews = [
+  { name: "Arjun M.", text: "Absolutely flawless wrap on my GT-R. The attention to detail is unreal.", rating: 5 },
+  { name: "Priya S.", text: "Best PPF service in town. My car looks brand new every single day.", rating: 5 },
+  { name: "Rohan K.", text: "Custom plate and bike wrap — both turned out better than I imagined.", rating: 5 },
+];
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.7, ease: "easeOut" as const },
+};
+
+const Home = () => {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % rotatingServices.length), 2200);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <>
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroCar}
+            alt="Luxury black and gold sports car"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
+          <div className="absolute inset-0 hero-glow" />
+        </div>
+
+        <div className="container-luxe relative z-10 pt-32 pb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xs md:text-sm uppercase tracking-[0.4em] text-gold mb-6"
+          >
+            — Premium Customization Studio
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="font-serif text-5xl sm:text-7xl lg:text-8xl leading-[0.95] max-w-5xl"
+          >
+            ROYAL <span className="gradient-gold-text">TOUCH</span>
+            <br />
+            WRAPPING
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl"
+          >
+            Premium Car & Bike Customization Services
+          </motion.p>
+
+          <div className="mt-6 flex items-center gap-3 text-2xl md:text-3xl font-serif h-12">
+            <span className="text-foreground/70">We do</span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={rotatingServices[idx]}
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                transition={{ duration: 0.5 }}
+                className="gradient-gold-text font-semibold"
+              >
+                {rotatingServices[idx]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-12 flex flex-wrap gap-4"
+          >
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-gold text-primary-foreground font-medium tracking-wider uppercase text-sm shadow-gold hover:scale-105 transition-transform"
+            >
+              Book Now
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-gold/40 text-foreground hover:bg-primary/10 hover:border-primary transition-all font-medium tracking-wider uppercase text-sm"
+            >
+              View Services
+            </Link>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          Scroll
+        </motion.div>
+      </section>
+
+      {/* SERVICES PREVIEW */}
+      <section className="py-28">
+        <div className="container-luxe">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">What we craft</p>
+            <h2 className="font-serif text-4xl md:text-6xl">
+              Signature <span className="gradient-gold-text">Services</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                whileHover={{ y: -6 }}
+                className="group relative p-8 rounded-2xl bg-card border border-border hover:border-primary/60 transition-all overflow-hidden"
+              >
+                <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-colors" />
+                <s.icon className="text-gold mb-6 relative" size={40} strokeWidth={1.4} />
+                <h3 className="font-serif text-2xl mb-2 relative">{s.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed relative">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-28 bg-card/50 border-y border-border">
+        <div className="container-luxe">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Loved by clients</p>
+            <h2 className="font-serif text-4xl md:text-6xl">
+              What Our <span className="gradient-gold-text">Clients</span> Say
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {reviews.map((r, i) => (
+              <motion.div
+                key={r.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.12 }}
+                className="p-8 rounded-2xl bg-background border border-border hover:shadow-gold transition-shadow"
+              >
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: r.rating }).map((_, k) => (
+                    <Star key={k} size={16} className="fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-foreground/90 leading-relaxed mb-6 font-serif text-lg italic">"{r.text}"</p>
+                <p className="text-sm text-gold uppercase tracking-widest">{r.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-28">
+        <div className="container-luxe">
+          <motion.div
+            {...fadeUp}
+            className="relative overflow-hidden rounded-3xl border border-primary/30 p-12 md:p-20 text-center"
+          >
+            <div className="absolute inset-0 hero-glow" />
+            <h2 className="relative font-serif text-4xl md:text-6xl mb-6">
+              Ready for the <span className="gradient-gold-text">Royal Treatment?</span>
+            </h2>
+            <p className="relative text-muted-foreground max-w-xl mx-auto mb-10">
+              Book a consultation today and let our experts craft something extraordinary.
+            </p>
+            <Link
+              to="/contact"
+              className="relative inline-flex items-center gap-2 px-10 py-4 rounded-full gradient-gold text-primary-foreground font-medium tracking-wider uppercase text-sm shadow-gold hover:scale-105 transition-transform"
+            >
+              Get in Touch <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Home;
