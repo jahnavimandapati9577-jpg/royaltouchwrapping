@@ -13,7 +13,7 @@ const About = () => (
   <>
     <PageHeader eyebrow="Our Story" title="About Royal Touch" subtitle="Where automotive passion meets uncompromising luxury." />
 
-    <section className="py-20">
+    <section className="py-16 md:py-20">
       <div className="container-luxe grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -45,7 +45,7 @@ const About = () => (
       </div>
     </section>
 
-    <section className="py-20 bg-card/50 border-y border-border">
+    <section className="py-16 md:py-20 bg-card/50 border-y border-border">
       <div className="container-luxe grid md:grid-cols-3 gap-8">
         {points.map((p, i) => (
           <motion.div

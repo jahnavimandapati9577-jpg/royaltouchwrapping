@@ -14,7 +14,7 @@ const WhyUs = () => (
   <>
     <PageHeader eyebrow="The Royal Difference" title="Why Choose Us" subtitle="Five reasons our clients keep coming back." />
 
-    <section className="pb-28">
+    <section className="pb-16 md:pb-28">
       <div className="container-luxe grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {items.map((it, i) => (
           <motion.div

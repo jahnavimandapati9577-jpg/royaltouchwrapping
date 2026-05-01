@@ -22,7 +22,7 @@ const Gallery = () => (
   <>
     <PageHeader eyebrow="Our Work" title="The Gallery" subtitle="A glimpse into projects that turned heads." />
 
-    <section className="pb-28">
+    <section className="pb-16 md:pb-28">
       <div className="container-luxe grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-[280px] gap-5">
         {items.map((it, i) => (
           <motion.figure

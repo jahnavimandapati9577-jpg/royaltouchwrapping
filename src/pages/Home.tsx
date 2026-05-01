@@ -154,7 +154,7 @@ const Home = () => {
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="relative mx-auto w-full max-w-md lg:max-w-none"
+            className="hidden lg:block relative mx-auto w-full max-w-md lg:max-w-none"
           >
             {/* glow */}
             <div className="absolute -inset-6 bg-primary/20 blur-3xl rounded-full opacity-60" />
@@ -212,7 +212,7 @@ const Home = () => {
       </section>
 
       {/* SERVICES PREVIEW */}
-      <section className="py-28">
+      <section className="py-16 md:py-28">
         <div className="container-luxe">
           <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">What we craft</p>
@@ -243,7 +243,7 @@ const Home = () => {
       </section>
 
       {/* REVIEWS */}
-      <section className="py-28 bg-card/50 border-y border-border">
+      <section className="py-16 md:py-28 bg-card/50 border-y border-border">
         <div className="container-luxe">
           <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Loved by clients</p>
@@ -276,7 +276,7 @@ const Home = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-16 md:py-28">
         <div className="container-luxe">
           <motion.div
             {...fadeUp}

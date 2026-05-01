@@ -6,7 +6,7 @@ const Services = () => (
   <>
     <PageHeader eyebrow="What we offer" title="Our Premium Services" subtitle="Six signature crafts. One uncompromising standard." />
 
-    <section className="pb-28">
+    <section className="pb-16 md:pb-28">
       <div className="container-luxe grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s, i) => (
           <motion.article

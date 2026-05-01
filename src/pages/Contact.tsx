@@ -18,7 +18,7 @@ const Contact = () => {
     <>
       <PageHeader eyebrow="Get in Touch" title="Contact Us" subtitle="Tell us about your dream project. We'll make it real." />
 
-      <section className="pb-28">
+      <section className="pb-16 md:pb-28">
         <div className="container-luxe grid lg:grid-cols-2 gap-10">
           {/* Info */}
           <motion.div
