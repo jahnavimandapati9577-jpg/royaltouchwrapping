@@ -59,12 +59,12 @@ const Home = () => {
 
         <div className="container-luxe relative z-10 pt-32 pb-12 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
           {/* LEFT: copy */}
-          <div>
+          <div className="min-w-0">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xs md:text-sm uppercase tracking-[0.4em] text-gold mb-6"
+              className="text-xs md:text-sm uppercase tracking-widest md:tracking-[0.4em] text-gold mb-6 break-words"
             >
               Premium Customization Studio
             </motion.p>
