@@ -66,7 +66,7 @@ const Home = () => {
               transition={{ delay: 0.2 }}
               className="text-xs md:text-sm uppercase tracking-[0.4em] text-gold mb-6"
             >
-              — Premium Customization Studio
+              Premium Customization Studio
             </motion.p>
 
             <motion.h1
