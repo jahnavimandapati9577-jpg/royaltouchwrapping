@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroCar}
@@ -57,7 +57,7 @@ const Home = () => {
           <div className="absolute inset-0 hero-glow" />
         </div>
 
-        <div className="container-luxe relative z-10 pt-32 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <div className="container-luxe relative z-10 pt-32 pb-12 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
           {/* LEFT: copy */}
           <div>
             <motion.p
@@ -209,14 +209,6 @@ const Home = () => {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-widest text-muted-foreground"
-        >
-          Scroll
-        </motion.div>
       </section>
 
       {/* SERVICES PREVIEW */}
