@@ -3,15 +3,21 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
 import heroCar from "@/assets/hero-car.jpg";
+import bikeImg from "@/assets/gallery-bike.jpg";
+import plateImg from "@/assets/gallery-plate.jpg";
+import wrapImg from "@/assets/gallery-wrap.jpg";
+import ppfImg from "@/assets/gallery-ppf.jpg";
+import laserImg from "@/assets/gallery-laser.jpg";
+import wallpaperImg from "@/assets/gallery-wallpaper.jpg";
 import { services } from "@/data/services";
 
 const rotatingServices = [
-  "Bike Wrapping",
-  "Car Plates",
-  "Wrapping & Stickering",
-  "Car & Bike PPF",
-  "Laser Cut",
-  "Wallpaper",
+  { label: "Bike Wrapping", img: bikeImg },
+  { label: "Car Plates", img: plateImg },
+  { label: "Wrapping & Stickering", img: wrapImg },
+  { label: "Car & Bike PPF", img: ppfImg },
+  { label: "Laser Cut", img: laserImg },
+  { label: "Wallpaper", img: wallpaperImg },
 ];
 
 const reviews = [
@@ -51,71 +57,133 @@ const Home = () => {
           <div className="absolute inset-0 hero-glow" />
         </div>
 
-        <div className="container-luxe relative z-10 pt-32 pb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xs md:text-sm uppercase tracking-[0.4em] text-gold mb-6"
-          >
-            — Premium Customization Studio
-          </motion.p>
+        <div className="container-luxe relative z-10 pt-32 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+          {/* LEFT: copy */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xs md:text-sm uppercase tracking-[0.4em] text-gold mb-6"
+            >
+              — Premium Customization Studio
+            </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="font-serif text-5xl sm:text-7xl lg:text-8xl leading-[0.95] max-w-5xl"
-          >
-            ROYAL <span className="gradient-gold-text">TOUCH</span>
-            <br />
-            WRAPPING
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
+            >
+              ROYAL <span className="gradient-gold-text">TOUCH</span>
+              <br />
+              WRAPPING
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl"
-          >
-            Premium Car & Bike Customization Services
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl"
+            >
+              Premium Car & Bike Customization Services
+            </motion.p>
 
-          <div className="mt-6 flex items-center gap-3 text-2xl md:text-3xl font-serif h-12">
-            <span className="text-foreground/70">We do</span>
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={rotatingServices[idx]}
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-                transition={{ duration: 0.5 }}
-                className="gradient-gold-text font-semibold"
+            <div className="mt-6 flex items-center gap-3 text-2xl md:text-3xl font-serif h-12">
+              <span className="text-foreground/70">We do</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={rotatingServices[idx].label}
+                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                  transition={{ duration: 0.5 }}
+                  className="gradient-gold-text font-semibold"
+                >
+                  {rotatingServices[idx].label}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-12 flex flex-wrap gap-4"
+            >
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-gold text-primary-foreground font-medium tracking-wider uppercase text-sm shadow-gold hover:scale-105 transition-transform"
               >
-                {rotatingServices[idx]}
-              </motion.span>
-            </AnimatePresence>
+                Book Now
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-gold/40 text-foreground hover:bg-primary/10 hover:border-primary transition-all font-medium tracking-wider uppercase text-sm"
+              >
+                View Services
+              </Link>
+            </motion.div>
           </div>
 
+          {/* RIGHT: rotating service image */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="mt-12 flex flex-wrap gap-4"
+            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+            className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-gold text-primary-foreground font-medium tracking-wider uppercase text-sm shadow-gold hover:scale-105 transition-transform"
-            >
-              Book Now
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-gold/40 text-foreground hover:bg-primary/10 hover:border-primary transition-all font-medium tracking-wider uppercase text-sm"
-            >
-              View Services
-            </Link>
+            {/* glow */}
+            <div className="absolute -inset-6 bg-primary/20 blur-3xl rounded-full opacity-60" />
+
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-primary/30 shadow-gold bg-card">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={rotatingServices[idx].label}
+                  src={rotatingServices[idx].img}
+                  alt={rotatingServices[idx].label}
+                  width={1024}
+                  height={1280}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent pointer-events-none" />
+
+              {/* label chip */}
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={rotatingServices[idx].label + "-chip"}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-1">Service {String(idx + 1).padStart(2, "0")}</p>
+                    <p className="font-serif text-2xl md:text-3xl text-foreground">{rotatingServices[idx].label}</p>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* progress dots */}
+                <div className="flex flex-col gap-1.5">
+                  {rotatingServices.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${
+                        i === idx ? "w-6 bg-primary" : "w-1.5 bg-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
