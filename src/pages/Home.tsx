@@ -12,8 +12,8 @@ import wallpaperImg from "@/assets/gallery-wallpaper.jpg";
 import { services } from "@/data/services";
 
 const rotatingServices = [
-  { label: "Bike Wrapping", img: bikeImg },
-  { label: "Car Plates", img: plateImg },
+  { label: "Bike and Car Wrapping", img: bikeImg },
+  { label: "Car and Bike Number Plates", img: plateImg },
   { label: "Wrapping & Stickering", img: wrapImg },
   { label: "Car & Bike PPF", img: ppfImg },
   { label: "Laser Cut", img: laserImg },

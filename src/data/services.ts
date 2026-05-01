@@ -3,12 +3,12 @@ import { Bike, Car, Sticker, Shield, Scissors, LayoutGrid } from "lucide-react";
 export const services = [
   {
     icon: Bike,
-    title: "Bike Wrapping",
+    title: "Bike and Car Wrapping",
     desc: "Transform your ride with premium vinyl wraps designed for two-wheel beauty and durability.",
   },
   {
     icon: LayoutGrid,
-    title: "Car Plates",
+    title: "Car and Bike Number Plates",
     desc: "Custom-designed number plates with elegant typography and premium finishes.",
   },
   {

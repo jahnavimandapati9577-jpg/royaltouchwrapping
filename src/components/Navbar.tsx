@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -36,20 +37,22 @@ const Navbar = () => {
       }`}
     >
       <nav className="container-luxe flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="font-serif text-2xl tracking-wider">
+        <Link to="/" className="flex items-center gap-3 group shrink-0 mr-4">
+          <img src={logo} alt="Royal Touch Wrapping Logo" className="h-14 md:h-20 w-auto object-contain" />
+          <span className="font-serif text-lg md:text-xl xl:text-2xl tracking-wider hidden sm:block">
             <span className="gradient-gold-text">ROYAL</span>
             <span className="text-foreground"> TOUCH</span>
+            <span className="gradient-gold-text"> WRAPPING</span>
           </span>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-10">
+        <ul className="hidden lg:flex items-center gap-4 xl:gap-6">
           {links.map((l) => (
             <li key={l.to}>
               <NavLink
                 to={l.to}
                 className={({ isActive }) =>
-                  `relative text-sm uppercase tracking-widest font-medium transition-colors ${
+                  `relative text-xs uppercase tracking-widest font-medium transition-colors ${
                     isActive ? "text-gold" : "text-foreground/80 hover:text-gold"
                   }`
                 }
@@ -72,7 +75,7 @@ const Navbar = () => {
 
         <Link
           to="/contact"
-          className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full gradient-gold text-primary-foreground font-medium text-sm tracking-wider uppercase shadow-gold hover:scale-105 transition-transform"
+          className="hidden lg:inline-flex items-center px-5 py-2 rounded-full gradient-gold text-primary-foreground font-medium text-xs tracking-wider uppercase shadow-gold hover:scale-105 transition-transform"
         >
           Book Now
         </Link>
@@ -96,7 +99,7 @@ const Navbar = () => {
                   <NavLink
                     to={l.to}
                     className={({ isActive }) =>
-                      `block py-2 text-base uppercase tracking-widest ${isActive ? "text-gold" : "text-foreground"}`
+                      `block py-2 text-sm uppercase tracking-widest ${isActive ? "text-gold" : "text-foreground"}`
                     }
                   >
                     {l.label}
@@ -105,7 +108,7 @@ const Navbar = () => {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 inline-flex justify-center items-center px-6 py-3 rounded-full gradient-gold text-primary-foreground font-medium uppercase tracking-wider"
+                className="mt-2 inline-flex justify-center items-center px-5 py-2.5 rounded-full gradient-gold text-primary-foreground font-medium text-sm uppercase tracking-wider"
               >
                 Book Now
               </Link>
