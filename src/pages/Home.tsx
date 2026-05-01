@@ -89,27 +89,11 @@ const Home = () => {
               Premium Car & Bike Customization Services
             </motion.p>
 
-            <div className="mt-6 flex items-center gap-3 text-2xl md:text-3xl font-serif h-12">
-              <span className="text-foreground/70">We do</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={rotatingServices[idx].label}
-                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-                  transition={{ duration: 0.5 }}
-                  className="gradient-gold-text font-semibold"
-                >
-                  {rotatingServices[idx].label}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-12 flex flex-wrap gap-4"
+              className="mt-10 flex flex-wrap gap-4"
             >
               <Link
                 to="/contact"
@@ -124,6 +108,44 @@ const Home = () => {
               >
                 View Services
               </Link>
+            </motion.div>
+
+            {/* Animated image strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="mt-12 relative overflow-hidden"
+              style={{
+                maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+              }}
+            >
+              <motion.div
+                className="flex gap-4 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              >
+                {[...rotatingServices, ...rotatingServices].map((s, i) => (
+                  <div
+                    key={i}
+                    className="group relative w-40 h-28 md:w-52 md:h-32 rounded-xl overflow-hidden border border-border hover:border-primary/60 transition-colors flex-shrink-0"
+                  >
+                    <img
+                      src={s.img}
+                      alt={s.label}
+                      loading="lazy"
+                      width={208}
+                      height={128}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+                    <p className="absolute bottom-2 left-3 right-3 font-serif text-sm md:text-base text-foreground">
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
           </div>
 
